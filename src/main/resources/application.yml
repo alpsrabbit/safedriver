@@ -24,5 +24,14 @@ spring:
     livereload:
       enabled: true
 
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.safedrive.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+    jdbc-type-for-null: null
+
 server:
   port: 8080 

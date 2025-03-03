@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.safedrive.mapper.UserMapper">
+    
+    <select id="findAllXml" resultType="com.safedrive.domain.User">
+        SELECT * FROM users
+    </select>
+    
+    <select id="findByIdXml" parameterType="long" resultType="com.safedrive.domain.User">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+    
+    <insert id="insertXml" parameterType="com.safedrive.domain.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (username, email, password, created_at, updated_at)
+        VALUES (#{username}, #{email}, #{password}, NOW(), NOW())
+    </insert>
+    
+    <update id="updateXml" parameterType="com.safedrive.domain.User">
+        UPDATE users 
+        SET username = #{username},
+            email = #{email},
+            password = #{password},
+            updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteXml" parameterType="long">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+</mapper> 
